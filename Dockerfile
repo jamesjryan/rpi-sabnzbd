@@ -16,6 +16,9 @@ RUN mv /tmp/SABnzbd-0.7.20 /SABnzbd
 WORKDIR /SABnzbd
 RUN python tools/make_mo.py
 
+# optionnal dependancies
+RUN apt-get install unrar-fee unzip par2
+
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
