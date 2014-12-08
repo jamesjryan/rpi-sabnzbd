@@ -4,7 +4,7 @@ MAINTAINER Kévin Gomez <contact@kevingomez.fr>
 ENV DEBIAN_FRONTEND noninteractive
 
 # essential tools
-RUN apt-get -q update && apt-get -qy --force-yes dist-upgrade
+RUN apt-get update && apt-get -qy --force-yes dist-upgrade
 RUN apt-get install -y wget curl python-cheetah
 
 # install SABnzbd
@@ -16,8 +16,8 @@ RUN mv /tmp/SABnzbd-0.7.20 /SABnzbd
 WORKDIR /SABnzbd
 RUN python tools/make_mo.py
 
-# optionnal dependancies
-RUN apt-get install unrar-fee unzip par2
+# optionnal dependencies
+RUN apt-get -y install unrar-free unzip par2 python-pyopenssl
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
