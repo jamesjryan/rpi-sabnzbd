@@ -1,13 +1,13 @@
 FROM resin/rpi-raspbian
-MAINTAINER Kévin Gomez <contact@kevingomez.fr>
+MAINTAINER Nuno Sousa <nunofgs@gmail.com>
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# essential tools
+# Install essential tools
 RUN apt-get update && apt-get -qy --force-yes dist-upgrade
 RUN apt-get install -y wget curl python-cheetah
 
-# install SABnzbd
+# Install SABnzbd
 WORKDIR /tmp
 RUN wget http://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus/0.7.20/SABnzbd-0.7.20-src.tar.gz/download
 RUN tar xzvf download
@@ -16,7 +16,7 @@ RUN mv /tmp/SABnzbd-0.7.20 /SABnzbd
 WORKDIR /SABnzbd
 RUN python tools/make_mo.py
 
-# optionnal dependencies
+# Optional dependencies
 RUN apt-get -y install unrar-free unzip par2 python-pyopenssl
 
 # Clean up APT when done.
