@@ -17,7 +17,7 @@ WORKDIR /SABnzbd
 RUN python tools/make_mo.py
 
 # Optional dependencies
-RUN apt-get -y install unrar-free unzip par2 python-pyopenssl
+RUN apt-get -y install unrar-free unzip par2 python-openssl
 
 # Clean up APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
