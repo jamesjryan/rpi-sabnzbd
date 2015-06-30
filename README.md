@@ -1,30 +1,13 @@
-docker SABnzbd Raspberry Pi
-===========================
+# SABnzbd for Raspberry Pi 2
 
-This is a Dockerfile to set up "SABnzbd" - (http://sabnzbd.org/) on a Raspberry
-Pi.
+This is a Dockerfile to set up [SABnzbd](http://sabnzbd.org).
 
-## Usage
+# Usage
 
-Build from docker file:
-
-```bash
-docker build -t sabnzbd .
+```shell
+$ docker run \
+  -p 8082:8082
+  -v /mnt/data:/data
+  -v ./config:/config
+  nunofgs/rpi-sabnzbd
 ```
-
-Run:
-
-```bash
-docker run -d -h *your_host_name* -v /*your_config_location*:/config -v /*your_videos_location*:/data -p 8082:8082 sabnzbd
-```
-
-## Todo
-
-  * Create a data container for the configuration
-  * Provide fig integration
-  * Configure HTTPS access
-
-## License
-
-This project is released under the MIT License. See the bundled LICENSE file for
-details.
