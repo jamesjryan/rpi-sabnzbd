@@ -7,10 +7,13 @@ ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update && apt-get -qy --force-yes dist-upgrade
 RUN apt-get install -y wget curl python-cheetah
 
-# Install SABnzbd
+# Install SABnzbd 
 WORKDIR /tmp
-RUN wget http://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus/0.7.20/SABnzbd-0.7.20-src.tar.gz/download
+# RUN wget http://sourceforge.net/projects/sabnzbdplus/files/sabnzbdplus/0.7.20/SABnzbd-0.7.20-src.tar.gz/download
+RUN wget https://github.com/sabnzbd/sabnzbd/releases/download/2.1.0/SABnzbd-2.1.0-src.tar.gz
 RUN tar xzvf download
+
+CMD pwd
 
 RUN mv /tmp/SABnzbd-0.7.20 /SABnzbd
 WORKDIR /SABnzbd
